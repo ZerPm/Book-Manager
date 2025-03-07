@@ -80,6 +80,27 @@ async function loginUser(credentials) {
     }
 }
 
+// Tarea 8: Agregar o modificar una reseña de un libro
+async function addOrUpdateReview(isbn, reviewData) {
+    try {
+        const response = await axios.post(`${API_URL}/reviews/${isbn}`, reviewData);
+        return response.data;
+    } catch (error) {
+        console.error('Error agregando o modificando reseña:', error);
+    }
+}
+
+// Tarea 9: Eliminar la reseña de un libro
+async function deleteReview(isbn, userId) {
+    try {
+        const response = await axios.delete(`${API_URL}/reviews/${isbn}`, { data: { userId } });
+        return response.data;
+    } catch (error) {
+        console.error('Error eliminando la reseña:', error);
+    }
+}
+
+
 // Implementación de métodos usando Async/Await y Promises
 // Tarea 10: Obtener todos los libros con callback asíncrona
 function fetchBooksAsync(callback) {
